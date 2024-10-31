@@ -37,6 +37,7 @@
     /* Style each container to take half the width and full height */
     #container1,
     #container2 {
+
       width: 49vw;
       height: 100vh;
       position: fixed;
@@ -78,8 +79,10 @@
           /* End fully opaque */
         );
       pointer-events: none;
+      opacity: 0;
       /* Allows interactions with content below */
     }
+
     #gradient-overlay-right {
       position: absolute;
       top: 0;
@@ -87,14 +90,34 @@
       width: 105%;
       height: 100%;
       background: linear-gradient(to left,
-          rgba(255, 255, 255,0.3) 30%,
+          rgba(255, 255, 255, 0.3) 30%,
           /* Start fully opaque */
           rgba(255, 255, 255, 1) 35%
           /* Center section semi-transparent */
           /* End fully opaque */
         );
       pointer-events: none;
+      opacity: 0;
       /* Allows interactions with content below */
+    }
+
+    #loading-screen {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #f0f0f0;
+      /* Background color for loading screen */
+      display: flex;
+      font-size: 2.25rem;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #333;
+      z-index: 10;
+      font-family: 'Google Sans', sans-serif;
     }
 
     /* Additional content for scrolling */
@@ -103,19 +126,6 @@
       color: white;
     }
   </style>
-  <!-- <style>
-  p {
-      color: white;
-  }
-  /* Or apply to all text in the document */
-  body {
-      color: white;
-  }
-
-  h2{
-    color: white;
-  }
-</style> -->
 </head>
 </head>
 
@@ -162,9 +172,16 @@
       animate();
   </script> -->
 
-   
-    <div id="container1"><div id= "gradient-overlay-left"></div> </div>
-    <div id="container2"><div id= "gradient-overlay-right"></div> </div>
+  <div id="loading-screen">Most Gaussians are forced to concentrate on the
+    high-frequency detail areas.
+    <div class="loader"></div>
+  </div>
+  <div id="container1">
+    <div id="gradient-overlay-left"></div>
+  </div>
+  <div id="container2">
+    <div id="gradient-overlay-right"></div>
+  </div>
 
 
   <div class="blank-space"></div>
@@ -203,12 +220,19 @@
           renderer.render(scene, camera);
         }
         animate();
+
+        if (containerId === "container2") {
+          window.scrollTo({ top: 0 });
+          document.getElementById("loading-screen").style.display = "none";
+        }
       });
     }
 
     // Initialize two separate scenes for each PLY file
     createScene("container1", "./static/images/playroom_point_cloud.ply", 0xffffff); // Left container
     createScene("container2", "./static/images/playroom_point_cloudM.ply", 0xffffff); // Right container
+
+
     window.addEventListener('scroll', () => {
       const scrollPosition1 = window.scrollY;
       const maxScroll1 = 1 * window.innerHeight;
@@ -264,7 +288,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">GaussianSpa: An “Optimizing-Sparsifying” Simplification Framework 
+            <h1 class="title is-1 publication-title">GaussianSpa: An “Optimizing-Sparsifying” Simplification Framework
               for Compact and High-Quality Gaussian Splatting</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
