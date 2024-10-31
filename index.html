@@ -38,7 +38,7 @@
     #container1,
     #container2 {
 
-      width: 49vw;
+      width: 50vw;
       height: 100vh;
       position: fixed;
       display: inline-block;
@@ -69,7 +69,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 105%;
+      width: 100%;
       height: 100%;
       background: linear-gradient(to right,
           rgba(255, 255, 255, 0.3) 20%,
@@ -87,7 +87,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 105%;
+      width: 100%;
       height: 100%;
       background: linear-gradient(to left,
           rgba(255, 255, 255, 0.3) 30%,
@@ -203,7 +203,7 @@
         const material = new THREE.PointsMaterial({ color: color, size: 0.01 });
         const pointCloud = new THREE.Points(geometry, material);
         scene.add(pointCloud);
-        let angle = 90;
+        let angle = 70;
         // Optional: Rotate point cloud in animation loop
         pointCloud.rotation.z = Math.PI + 0.1; // Rotate point cloud to align with the camera
         pointCloud.rotation.y = Math.PI - 0.2; // Rotate point cloud to align with the camera
@@ -229,8 +229,8 @@
     }
 
     // Initialize two separate scenes for each PLY file
-    createScene("container1", "./static/images/playroom_point_cloud.ply", 0xffffff); // Left container
-    createScene("container2", "./static/images/playroom_point_cloudM.ply", 0xffffff); // Right container
+    createScene("container1", "./static/images/playroom_point_cloud_downsampled.ply", 0xffffff); // Left container
+    createScene("container2", "./static/images/playroom_point_cloudM_downsampled.ply", 0xffffff); // Right container
 
 
     window.addEventListener('scroll', () => {
@@ -290,24 +290,24 @@
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">GaussianSpa: An “Optimizing-Sparsifying” Simplification Framework
               for Compact and High-Quality Gaussian Splatting</h1>
-            <div class="is-size-5 publication-authors">
+            <div class="is-size-4 publication-authors">
               <span class="author-block">
-                <a href="https://.com">Anonymous</a><sup>1</sup>,
+                <a href="https://.com">Yangming Zhang</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://.com">Anonymous</a><sup>2</sup>,
+                <a href="https://.com">Wenqi Jia</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://.info">Anonymous</a><sup>2</sup>,
+                <a href="https://.info">Wei Niu</a><sup>2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://home">Anonymous</a><sup>1,2</sup>,
+                <a href="https://home">Miao Yin</a><sup>1</sup>
               </span>
             </div>
 
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>University of Anonymous</span>
-              <span class="author-block"><sup>2</sup>Anonymous</span>
+            <div class="is-size-4 publication-authors">
+              <span class="author-block"><sup>1</sup>University of Texas at Arlington</span>
+              <span class="author-block"><sup>2</sup>University of Georgia</span>
             </div>
 
             <div class="column has-text-centered">
