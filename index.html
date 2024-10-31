@@ -72,9 +72,9 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(to right,
-          rgba(255, 255, 255, 0.3) 20%,
+          rgba(255, 255, 255, 0.3) 30%,
           /* Start fully opaque */
-          rgba(255, 255, 255, 1) 25%
+          rgba(255, 255, 255, 1) 35%
           /* Center section semi-transparent */
           /* End fully opaque */
         );
@@ -130,61 +130,21 @@
 </head>
 
 <body>
-
-  <!-- <div id="container"></div>
-  <div id="container"></div>
-  <script>
-      // Initialize Scene, Camera, and Renderer
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerHeight/2, window.innerHeight/2);
-      document.getElementById("container").appendChild(renderer.domElement);
-
-      // Set camera position
-      camera.position.x = 0;
-      camera.position.y = 0;
-      camera.position.z = 0;
-
-
-      // Load the PLY file
-      const loader = new THREE.PLYLoader();
-      loader.load('./static/images/playroom_point_cloud.ply', function (geometry) {
-          const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.01 });
-          const pointCloud = new THREE.Points(geometry, material);
-          scene.add(pointCloud);
-      });
-
-      // Render loop
-      let angle = 0;
-
-      function animate() {
-          requestAnimationFrame(animate);
-
-          // Rotate the camera in a circular path around the origin
-          angle += 0.001;
-          camera.position.x = 1 * Math.cos(angle); // radius of the circle
-          camera.position.z = 1 * Math.sin(angle); // radius of the circle
-          camera.lookAt(scene.position); // Keep camera pointed at the scene center
-
-          renderer.render(scene, camera);
-      }
-      animate();
-  </script> -->
-
   <div id="loading-screen">Most Gaussians are forced to concentrate on the
     high-frequency detail areas.
     <div class="loader"></div>
   </div>
   <div id="container1">
+    <span class="top-left ply-label">GaussianSpa</span>
     <div id="gradient-overlay-left"></div>
+    
   </div>
   <div id="container2">
+    <span class="top-right ply-label">Mini-Splatting</span>
     <div id="gradient-overlay-right"></div>
   </div>
-
-
   <div class="blank-space"></div>
+
   <script>
     // Function to create a scene, load a PLY file, and render it
     function createScene(containerId, plyFilePath, color) {
@@ -240,9 +200,14 @@
 
       document.getElementById("gradient-overlay-right").style.opacity = opacity1;
       document.getElementById("gradient-overlay-left").style.opacity = opacity1;
+      const elements = document.getElementsByClassName("ply-label");
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].style.opacity = 0.9 - 3*opacity1;
+      }
 
     });
   </script>
+
   <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -292,16 +257,16 @@
               for Compact and High-Quality Gaussian Splatting</h1>
             <div class="is-size-4 publication-authors">
               <span class="author-block">
-                <a href="https://.com">Yangming Zhang</a><sup>1</sup>,
+                <a href="https://miaoyin390.github.io/">Yangming Zhang</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://.com">Wenqi Jia</a><sup>1</sup>,
+                <a href="https://miaoyin390.github.io/">Wenqi Jia</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://.info">Wei Niu</a><sup>2</sup>,
+                <a href="https://niuwei.info/">Wei Niu</a><sup>2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://home">Miao Yin</a><sup>1</sup>
+                <a href="https://miaoyin390.github.io/">Miao Yin</a><sup>1</sup>
               </span>
             </div>
 
@@ -374,7 +339,7 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths" color=white>
-          <h2 class="title is-3">Abstract</h2>
+          <h2 class="title is-3" style="color:floralwhite ;">Abstract</h2>
           <div class="content has-text-justified">
             <p>
               We present GaussianSpa, enabling high-quality and compact view synthesis with superior rendering of
@@ -405,20 +370,21 @@
           <div class="is-centered has-text-centered"><img src="static/images/framework.png" alt="framework" width="80%">
           </div>
           <p style="padding-top: 0.5rem; padding-bottom: 0.5rem;">
-            Our method consists of three main steps: (more details please refer to our paper)
+
+            
           <ol style="padding-left: 1.5rem;">
-            <li> The constrained numbers of Gaussians optimization problem can be reformulated as:
-              \begin{equation}\label{eqn:obj-opacity-form}
-              \begin{aligned}
-              \min_{(a,\Theta)} ~&\mathcal{L}(a,\Theta),
-              \text{s.t.}&\|a\|_0\leq\kappa.
-              \end{aligned}
-              \end{equation}
-              Variable \(\Theta\) represent other GS variables except for the opacity \(a\),
-              and restrict opacity number of non-zeros with \(\ell_0\) norm. </li>
+            The constrained numbers of Gaussians optimization problem can be reformulated as:
+            \begin{equation}\label{eqn:obj-opacity-form}
+            \begin{aligned}
+            \min_{(a,\Theta)} ~&\mathcal{L}(a,\Theta),
+            \text{s.t.}&\|a\|_0\leq\kappa.
+            \end{aligned}
+            \end{equation}
+            Variable \(\Theta\) represent other GS variables except for the opacity \(a\),
+            and restrict opacity number of non-zeros with \(\ell_0\) norm.
+            Our method consists of two main steps: (more details please refer to our paper)
             <li>\begin{equation}\label{eqn:obj-optimizing}
-              \hspace{-1.7mm}\textbf{Optimizing
-              Step:}\min_{a,\Theta}\mathcal{L}(a,\Theta)+\frac{\delta}{2}\|a-z+\lambda\|^2.
+              \hspace{-1.7mm}\textbf{Optimizing Step:}\min_{a,\Theta}\mathcal{L}(a,\Theta)+\frac{\delta}{2}\|a-z+\lambda\|^2.
               \end{equation}
               The "optimizing" step essentially optimizes the original Gaussian and pushes the opacity \(a\)
               close to the auxiliary \(z\) that is exactly sparse using a gradient-based approach.
