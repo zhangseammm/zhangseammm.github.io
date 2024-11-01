@@ -3,12 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="<!DOCTYPE html>
-<html>
-
-
-<head>
-  <meta charset=" utf-8">
   <meta name="description"
     content="GaussianSpa: An “Optimizing-Sparsifying” Simplification Framework for Compact and High-Quality Gaussian Splatting.">
   <meta name="keywords" content="GaussianSpa">
@@ -33,100 +27,10 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/PLYLoader.js"></script>
+  <script src="./static/js/index.js"></script>
   <style>
     /* Style each container to take half the width and full height */
-    #container1,
-    #container2 {
-
-      width: 50vw;
-      height: 100vh;
-      position: fixed;
-      display: inline-block;
-      top: 0;
-      transition: opacity 0.2s ease;
-      /* Smooth opacity transition */
-    }
-
-    #container1 {
-      left: 0;
-      background: #000000;
-      /* Optional background color for visibility */
-    }
-
-    #container2 {
-      right: 0;
-      background: #000000;
-    }
-
-    .blank-space {
-      width: 100vw;
-      height: 50vh;
-      /* Height of blank area */
-      background-color: white;
-    }
-
-    #gradient-overlay-left {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right,
-          rgba(255, 255, 255, 0.3) 30%,
-          /* Start fully opaque */
-          rgba(255, 255, 255, 1) 35%
-          /* Center section semi-transparent */
-          /* End fully opaque */
-        );
-      pointer-events: none;
-      opacity: 0;
-      /* Allows interactions with content below */
-    }
-
-    #gradient-overlay-right {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to left,
-          rgba(255, 255, 255, 0.3) 30%,
-          /* Start fully opaque */
-          rgba(255, 255, 255, 1) 35%
-          /* Center section semi-transparent */
-          /* End fully opaque */
-        );
-      pointer-events: none;
-      opacity: 0;
-      /* Allows interactions with content below */
-    }
-
-    #loading-screen {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #f0f0f0;
-      /* Background color for loading screen */
-      display: flex;
-      font-size: 2.25rem;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #333;
-      z-index: 10;
-      font-family: 'Google Sans', sans-serif;
-    }
-
-    /* Additional content for scrolling */
-    /* Additional content for scrolling */
-    .publication-title {
-      color: white;
-    }
   </style>
-</head>
 </head>
 
 <body>
@@ -134,19 +38,24 @@
     high-frequency detail areas.
     <div class="loader"></div>
   </div>
+
+  <div class="parallax-header">
+    <h1>GaussianSpa</h1>
+  </div>
+
   <div id="container1">
+
     <span class="top-left ply-label">GaussianSpa</span>
     <div id="gradient-overlay-left"></div>
-    
+
   </div>
   <div id="container2">
     <span class="top-right ply-label">Mini-Splatting</span>
     <div id="gradient-overlay-right"></div>
   </div>
-  <div class="blank-space"></div>
 
+  <div class="blank-space"></div>
   <script>
-    // Function to create a scene, load a PLY file, and render it
     function createScene(containerId, plyFilePath, color) {
       // Create scene, camera, and renderer
       const scene = new THREE.Scene();
@@ -163,7 +72,7 @@
         const material = new THREE.PointsMaterial({ color: color, size: 0.01 });
         const pointCloud = new THREE.Points(geometry, material);
         scene.add(pointCloud);
-        let angle = 70;
+        let angle = 1.4;
         // Optional: Rotate point cloud in animation loop
         pointCloud.rotation.z = Math.PI + 0.1; // Rotate point cloud to align with the camera
         pointCloud.rotation.y = Math.PI - 0.2; // Rotate point cloud to align with the camera
@@ -202,11 +111,20 @@
       document.getElementById("gradient-overlay-left").style.opacity = opacity1;
       const elements = document.getElementsByClassName("ply-label");
       for (let i = 0; i < elements.length; i++) {
-        elements[i].style.opacity = 0.9 - 3*opacity1;
+        elements[i].style.opacity = 0.9 - 3 * opacity1;
       }
 
     });
+
+    function adjustStickyPosition() {
+      var contentLeft = document.getElementById('left-content');
+      var height = contentLeft.clientHeight;
+      var topOffset = 'calc(50% - ' + (height / 2) + 'px)';
+      contentLeft.style.top = topOffset;
+    }
   </script>
+
+
 
   <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -253,7 +171,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">GaussianSpa: An “Optimizing-Sparsifying” Simplification Framework
+            <h1 class="title is-1 publication-title" id="left-content">An “Optimizing-Sparsifying”
+              Simplification Framework
               for Compact and High-Quality Gaussian Splatting</h1>
             <div class="is-size-4 publication-authors">
               <span class="author-block">
@@ -286,16 +205,8 @@
                     <span>Paper</span>
                   </a>
                 </span>
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2011.948" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
                 <!-- Video Link. -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://www.youtube.com/watch?vhk8IA"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -303,7 +214,7 @@
                     </span>
                     <span>Video</span>
                   </a>
-                </span>
+                </span> -->
                 <!-- Code Link. -->
                 <span class="link-block">
                   <a href="https://github.com/google/neies" class="external-link button is-normal is-rounded is-dark">
@@ -314,14 +225,7 @@
                   </a>
                 </span>
                 <!-- Dataset Link. -->
-                <span class="link-block">
-                  <a href="https://github.com/google/nerfies/reles/tag/0.1"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="far fa-images"></i>
-                    </span>
-                    <span>Data</span>
-                  </a>
+
               </div>
 
             </div>
@@ -339,11 +243,9 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths" color=white>
-          <h2 class="title is-3" style="color:floralwhite ;">Abstract</h2>
+          <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We present GaussianSpa, enabling high-quality and compact view synthesis with superior rendering of
-              details.
               3D Gaussian Splatting (3DGS) has emerged as a mainstream for novel view synthesis,
               leveraging continuous aggregations of Gaussian functions to model scene geometry.
               However, 3DGS suffers from substantial memory requirements to store the multitude of Gaussians, hindering
@@ -371,31 +273,33 @@
           </div>
           <p style="padding-top: 0.5rem; padding-bottom: 0.5rem;">
 
-            
+
           <ol style="padding-left: 1.5rem;">
             The constrained numbers of Gaussians optimization problem can be reformulated as:
             \begin{equation}\label{eqn:obj-opacity-form}
             \begin{aligned}
-            \min_{(a,\Theta)} ~&\mathcal{L}(a,\Theta),
-            \text{s.t.}&\|a\|_0\leq\kappa.
+            \min_{(\boldsymbol{a},\boldsymbol{\Theta})} ~&\mathcal{L}(\boldsymbol{a},\boldsymbol{\Theta}),
+            \text{s.t.}&\|\boldsymbol{a}\|_0\leq\kappa.
             \end{aligned}
             \end{equation}
-            Variable \(\Theta\) represent other GS variables except for the opacity \(a\),
+            Variable \(\boldsymbol{\Theta}\) represent other GS variables except for the opacity \(\boldsymbol{a}\),
             and restrict opacity number of non-zeros with \(\ell_0\) norm.
-            Our method consists of two main steps: (more details please refer to our paper)
+            We present an efficient "optimizing-sparsifying" solution to the problem, consisting of two main steps (more
+            details please refer to our paper):
             <li>\begin{equation}\label{eqn:obj-optimizing}
-              \hspace{-1.7mm}\textbf{Optimizing Step:}\min_{a,\Theta}\mathcal{L}(a,\Theta)+\frac{\delta}{2}\|a-z+\lambda\|^2.
+              \textbf{Optimizing  Step:}\min_{\boldsymbol{a},\boldsymbol{{\Theta}}}\mathcal{L}(\boldsymbol{a},\boldsymbol{\Theta})+\frac{\delta}{2}\|\boldsymbol{a}-\boldsymbol{z}+\boldsymbol{\lambda}\|^2.
               \end{equation}
-              The "optimizing" step essentially optimizes the original Gaussian and pushes the opacity \(a\)
-              close to the auxiliary \(z\) that is exactly sparse using a gradient-based approach.
+              The "optimizing" step essentially optimizes the original Gaussian and pushes the opacity
+              \(\boldsymbol{a}\)
+              close to the auxiliary \(\boldsymbol{z}\) that is exactly sparse using a gradient-based approach.
               This way, it can simultaneously satisfy the 3DGS performance and the sparsity requirements,
               achieving a sweet point in the training process.</li>
             <li>
               \begin{equation}\label{eqn:obj-sparsifying}
-              \textbf{Sparsifying Step:}\min_{z}h(z)+\frac{\delta}{2}\|a-z+\lambda\|^2.
+              \textbf{Sparsifying  Step:}\min_{\boldsymbol{z}}h(\boldsymbol{z})+\frac{\delta}{2}\|\boldsymbol{a}-\boldsymbol{z}+\boldsymbol{\lambda}\|^2.
               \end{equation}
               The "sparsifying" step essentially prunes the auxiliary variable \(z\),
-              which can be considered the exactly sparse version of \(a\). By not directly operating
+              which can be considered the exactly sparse version of \(\boldsymbol{a}\). By not directly operating
               the original Gaussians, this step avoids the irreversible loss of important information.</li>
           </ol>
           </p>
@@ -427,8 +331,8 @@
           <div class="content">
             <h2 class="title is-4">Comparison to 3DGS</h2>
             <p>
-              Our GaussianSpa even after reducing the Gaussian points by 6×,
-              still achieves an improvement of 0.5 dB over the vanilla 3DGS.
+              Our GaussianSpa still achieves 0.5dB PSNR improvement
+              even after reducing the Gaussian points by 6×.
             </p>
             <img-comparison-slider style="width: 100%;" hover="hover">
               <span slot="first" class="img-container">
@@ -490,9 +394,10 @@
         <div class="column">
           <div class="columns is-centered">
             <div class="column content">
-              <h2 class="title is-4">Comparison to Mini-splatting</h2>
+              <h2 class="title is-4">Comparison to Mini-Splatting</h2>
               <p>
-                Captures detail-rich textures more accurately using less number of Gaussians than STOAs.
+                Our GaussianSpa captures detail-rich textures more accurately
+                using less number of Gaussians than SOTA.
               </p>
               <img-comparison-slider style="width: 100%;" hover="hover">
                 <span slot="first" class="img-container">
