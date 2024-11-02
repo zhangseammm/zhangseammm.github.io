@@ -265,7 +265,7 @@
 	display: grid;
 	place-items: center;
 	text-align: center;
-	font-size: calc(4vw + 1em);
+	font-size: 3em;
 	z-index: 3;
 	position: fixed;
   align-items: flex-end;
@@ -279,7 +279,7 @@
 @keyframes sticky-parallax-header {
 	0% {
 		height: 53vh;
-		font-size: calc(4vw + 1em);
+		font-size: calc(3em);
     background-color: rgba(0, 0, 0, 0);
     pointer-events: none;
 	}
@@ -300,5 +300,9 @@
 .navbar-dropdown {
   background-color: black;
   color:rgba(255, 255, 255, 0.9);
+}
+
+.navbar-item.has-dropdown {
+  align-items: stretch
 }
 
