@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="description"
     content="Gaussians on Diet: A Systematic Memory-Bounded 3D Gaussian Splatting Training Framework for Edge Devices">
-  <meta name="keywords" content=" DietGaussians">
+  <meta name="keywords" content="Gaussians on Diet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gaussians on Diet: A Systematic Memory-Bounded 3D Gaussian Splatting Training Framework for Edge Devices
   </title>
@@ -38,7 +38,7 @@
 <body>
      
 </script>
-  <div id="loading-screen">Towards sparse representation for high-quality and compact 3D Gaussian Splatting.
+  <div id="loading-screen">A Systematic Memory-Bounded 3D Gaussian Splatting Training Framework for Edge Devices.
     <div class="loader"></div>
   </div>
 
@@ -49,11 +49,6 @@
 
             Gaussians on Diet
 
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://Miaoyin390.github.io">
-              Noodle Lab
-            </a>
-          </div>
         </div>
       </div>
 
@@ -67,7 +62,7 @@
   </div>
 
   <div id="container2">
-    <span class="top-right ply-label">DietGaussians</span>
+    <span class="top-right ply-label">Ours</span>
     <div id="gradient-overlay-right"></div>
   </div>
   <div class="blank-space"></div>
@@ -122,13 +117,13 @@
     window.addEventListener('scroll', () => {
       const scrollPosition1 = window.scrollY;
       const maxScroll1 = 1 * window.innerHeight;
-      const opacity1 = Math.min(scrollPosition1 / maxScroll1, 0.9);
+      const opacity1 = Math.min(scrollPosition1 / maxScroll1*2, 0.9);
       const opacity2 = Math.min(scrollPosition1 / maxScroll1, 0.9);
 
       document.getElementById("gradient-overlay-right").style.opacity = opacity1;
       document.getElementById("gradient-overlay-left").style.opacity = opacity1;
-      document.getElementById("abstract1").style.opacity = 4 * opacity2 - 0.3;
-      document.getElementById("abstract2").style.opacity = 4 * opacity2 - 0.3;
+      document.getElementById("abstract1").style.opacity = 6 * opacity2 - 0.3;
+      document.getElementById("abstract2").style.opacity = 6 * opacity2 - 0.3;
       const elements = document.getElementsByClassName("ply-label");
       for (let i = 0; i < elements.length; i++) {
         elements[i].style.opacity = 0.9 - 3 * opacity1;
@@ -144,62 +139,6 @@
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">A Systematic Memory-Bounded 3D Gaussian
             Splatting Training Framework for Edge Devices</h1>
-            <!-- <div class="is-size-4 publication-authors">
-              <span class="author-block">
-                <a href="https://miaoyin390.github.io/">Yangming Zhang</a><sup>1*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://miaoyin390.github.io/">Jian Xu</a><sup>1*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://niuwei.info/">Wei Niu</a><sup>2</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://miaoyin390.github.io/">Miao Yin</a><sup>1</sup>
-              </span>
-            </div>
-
-            <div class="is-size-4 publication-authors">
-              <span class="author-block"><sup>1</sup>Department of Computer Science, University of Texas at
-                Arlington</span>
-              <span class="author-block" style="display: block;"><sup>2</sup>School of Computing, University of
-                Georgia</span>
-            </div> -->
-
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <!-- PDF Link. -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/pdf/2411.06019" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
-                </span>
-                <!-- Video Link. -->
-                <!-- <span class="link-block">
-                  <a href="https://www.youtube.com/watch?vhk8IA"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                    </span>
-                    <span>Video</span>
-                  </a>
-                </span> -->
-                <!-- Code Link. -->
-                <span class="link-block">
-                  <a href="https://github.com/miaoyin390/GaussianSpa" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-                <!-- Dataset Link. -->
-
-              </div>
-
             </div>
           </div>
         </div>
@@ -214,7 +153,7 @@
     <div class="container is-max-desktop">
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered" sytle="margin-bottom:0rem;">
-        <div class="column is-four-fifths" style="padding-bottom:2rem;">
+        <div class="column is-four-fifths" style="padding-bottom:6rem;">
           <h2 class="title is-3" id="abstract1">Abstract</h2>
           <div class="content has-text-justified" sytle="margin-bottom:0rem;">
             <p id="abstract2">
@@ -357,7 +296,7 @@
           <div class="content">
             <h2 class="title is-4">Comparison to 3DGS</h2>
             <p>
-              Our DietGaussians presents higher-quality rendered views with up to 10x reduction than vanilla 3DGS.
+              Our method presents higher-quality rendered views with up to 10x reduction than vanilla 3DGS.
             </p>
             <img-comparison-slider style="width: 100%;" hover="hover">
               <span slot="first" class="img-container">
@@ -421,7 +360,7 @@
             <div class="column content">
               <h2 class="title is-4">Comparison to Taming 3DGS</h2>
               <p>
-                Our DietGaussians captures detail-rich textures more accurately compared to the SOTA.
+                Our method captures detail-rich textures more accurately compared to the SOTA.
               </p>
               <img-comparison-slider style="width: 100%;" hover="hover">
                 <span slot="first" class="img-container">
@@ -485,32 +424,8 @@
 
 
 
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{zhang2024gaussianspa,
-        title={GaussianSpa: An "Optimizing-Sparsifying" Simplification Framework for Compact and High-Quality 3D Gaussian Splatting}, 
-        author={Yangming Zhang and Wenqi Jia and Wei Niu and Miao Yin},
-        year={2024},
-        eprint={2411.06019},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV},
-        url={https://arxiv.org/abs/2411.06019}, 
-  }</code></pre>
-    </div>
-  </section>
-
-
   <footer class="footer">
     <div class="container">
-      <!-- <div class="content has-text-centered">
-        <a class="icon-link" href="./static/videos/nerfies_paper.pdf">
-          <i class="fas fa-file-pdf"></i>
-        </a>
-        <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-          <i class="fab fa-github"></i>
-        </a>
-      </div> -->
       <div class="columns is-centered">
         <div class="column is-8">
           <div class="content">
