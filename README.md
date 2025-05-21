@@ -1,4 +1,4 @@
-# GaussianSpa
+# DietGaussians
 # Update info
 ## Initialize website
 This is the repository that contains source code for the [Diet Gaussians website](https://gaussianspa.github.io).
