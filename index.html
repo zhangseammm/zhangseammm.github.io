@@ -3,11 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-    content="Gaussians on Diet: A Systematic Memory-Bounded 3D Gaussian Splatting Training Framework for Edge Devices">
+  <meta name="description" content="Gaussians on Diet: Memory-Bounded 3D Gaussian Splatting Training">
   <meta name="keywords" content="Gaussians on Diet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gaussians on Diet: A Systematic Memory-Bounded 3D Gaussian Splatting Training Framework for Edge Devices
+  <title>Gaussians on Diet: Memory-Bounded 3D Gaussian Splatting Training
   </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="./static/images/GaussianSpa.png" type="image/png">
@@ -36,9 +35,9 @@
 </head>
 
 <body>
-     
-</script>
-  <div id="loading-screen">A Systematic Memory-Bounded 3D Gaussian Splatting Training Framework for Edge Devices.
+
+  </script>
+  <div id="loading-screen">Memory-Bounded 3D Gaussian Splatting Training.
     <div class="loader"></div>
   </div>
 
@@ -63,7 +62,7 @@
     <div id="gradient-overlay-right"></div>
   </div>
   <div class="blank-space"></div>
-  
+
   <script>
     function createScene(containerId, plyFilePath, color) {
       // Create scene, camera, and renderer
@@ -114,7 +113,7 @@
     window.addEventListener('scroll', () => {
       const scrollPosition1 = window.scrollY;
       const maxScroll1 = 1 * window.innerHeight;
-      const opacity1 = Math.min(scrollPosition1 / maxScroll1*2, 0.9);
+      const opacity1 = Math.min(scrollPosition1 / maxScroll1 * 2, 0.9);
       const opacity2 = Math.min(scrollPosition1 / maxScroll1, 0.9);
 
       document.getElementById("gradient-overlay-right").style.opacity = opacity1;
@@ -134,12 +133,12 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title" style="color:#f9f2d9;">A Systematic Memory-Bounded 3D Gaussian
-            Splatting Training Framework for Edge Devices</h1>
-            </div>
+            <h1 class="title is-1 publication-title" style="color:#f9f2d9;">Memory-Bounded 3D Gaussian Splatting
+              Training</h1>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -154,25 +153,23 @@
           <h2 class="title is-3" id="abstract1">Abstract</h2>
           <div class="content has-text-justified" sytle="margin-bottom:0rem;">
             <p id="abstract2">
-            3D Gaussian Splatting (3DGS) has emerged as a mainstream paradigm for
-            novel view synthesis with high-quality rendering through millions of 3D
-            Gaussian primitives. However, it suffers from a substantial memory foot-
-            print, particularly during training due to uncontrolled densification, posing
-            a critical bottleneck for deployment on memory-constrained edge devices.
-            While existing methods prune redundant Gaussians post-training, they fail
-            to address the peak memory spikes caused by the abrupt growth of Gaussians
-            early in the training process. To solve the training memory consumption
-            problem, we propose a systematic training framework that dynamically
-            grows and removes Gaussians in an iterative way, where the growth and
-            removal are performed in frequently repeated loops. In other words, the
-            proposed framework alternates between incremental pruning of low-impact
-            Gaussians and strategic growing of new primitives, maintaining a near-
-            constant low memory usage while preserving rendering fidelity. We con-
-            duct a comprehensive evaluation of our proposed framework on various
-            real-world datasets under strict memory constraints, showing significant
-            improvements over existing state-of-the-art methods. The proposed frame-
-            work enables practical 3DGS training on edge platforms like NVIDIA Jetson
-            Nano, achieving competitive visual quality with 70-80% memory savings.
+              3D Gaussian Splatting (3DGS) has revolutionized novel view synthesis with high-quality rendering through
+              continuous aggregations of millions of 3D Gaussian primitives. However, it suffers from a substantial
+              memory footprint, particularly during training due to
+              uncontrolled densification, posing a critical bottleneck for deployment on memory-constrained edge
+              devices. While existing methods prune redundant Gaussians post-training, they fail to address the peak
+              memory spikes caused by the abrupt growth of Gaussians early
+              in the training process. To solve the training memory consumption problem, we propose a systematic
+              training framework that dynamically grows, identifies, and removes Gaussians in an iterative way, where
+              the growth and removal are alternatively performed in each iteration.
+              In other words, the proposed framework alternates between incremental pruning of low-impact Gaussians and
+              strategic growing of new primitives with an adaptive Gaussian compensation, maintaining a near-constant
+              low memory usage while progressively refining rendering fidelity.
+              We comprehensively evaluate the proposed training framework on various real-world datasets under strict
+              memory constraints, showing significant improvements over existing state-of-the-art methods. Particularly,
+              our proposed method practically enables memory-efficient 3DGS training on
+              NVIDIA Jetson AGX Xavier, achieving similar visual quality with up to 80% lower peak training memory
+              consumption than the original 3DGS.
             </p>
           </div>
         </div>
@@ -180,59 +177,91 @@
 
       <!-- Paper video. -->
       <div class="columns is-centered" sytle="margin-top:0rem;">
-        
 
-          
-            <!-- <video class="video" width="100%" id="ablation1" loop="" playsinline="" autoplay="" muted="" -->
-            <video class="video"  id="ablation1" width="100%" loop="" playsinline="" autoplay="" muted="" controls preload="metadata"
-              src="./static/videos/bicycle_training.mp4" ></video> 
-          
 
-        
+
+        <!-- <video class="video" width="100%" id="ablation1" loop="" playsinline="" autoplay="" muted="" -->
+        <video class="video" id="ablation1" width="100%" loop="" playsinline="" autoplay="" muted="" controls
+          preload="metadata" src="./static/videos/bicycle_training.mp4"></video>
+
+
+
       </div>
       <section class="section">
         <div class="container is-max-desktop">
           <h2 class="title is-3">Method Overview</h2>
-          <div class="is-centered has-text-centered"><img src="./static/images/framework.svg" alt="framework" width="100%">
+          <div class="is-centered has-text-centered"><img src="./static/images/framework.svg" alt="framework"
+              width="100%">
           </div>
           <p style="padding-top: 0.5rem; padding-bottom: 0rem;">
-
-
-          <ol style="padding-left: 1.5rem;" sytle="list-style-type:none;">
-            Our GaussianSpa formulates 3DGS simplification as a constrained optimization problem with a sparsity
-            constraint:
-            \begin{equation}\label{eqn:obj-opacity-form}
-            \begin{aligned}
-            \min_{(\boldsymbol{a},\boldsymbol{\Theta})} ~&\mathcal{L}(\boldsymbol{a},\boldsymbol{\Theta}),
-            \end{aligned}
-            \end{equation}
-            \begin{equation}
-            \begin{aligned}
-            \text{s.t.}\hspace{0.2cm}&\|\boldsymbol{a}\|_0\leq\kappa.
-            \end{aligned}
-            \end{equation}
-            Variable \(\boldsymbol{\Theta}\) represent other GS variables except for the Gaussian opacity \(\boldsymbol{a}\),
-            and the sparsity constraint restricts the \(\ell_0\) norm of the Gaussian opacity to a specified number.
-            We present an efficient "optimizing-sparsifying" solution to solve this problem, consisting of two main
-            steps
-            (please refer to our paper for more details):
-            <p>\begin{equation}\label{eqn:obj-optimizing}
-              \textbf{ “Optimizing” Step:}\hspace{0.3cm}\min_{\boldsymbol{a},\boldsymbol{{\Theta}}}\mathcal{L}(\boldsymbol{a},\boldsymbol{\Theta})+\frac{\delta}{2}\|\boldsymbol{a}-\boldsymbol{z}+\boldsymbol{\lambda}\|^2.
-              \end{equation}
-              The "optimizing" step essentially optimizes over the original Gaussian variables and pushes the Gaussian opacity
-              \(\boldsymbol{a}\)
-              close to the auxiliary \(\boldsymbol{z}\) that is exactly sparse using a gradient-based approach.
-              This way, it can simultaneously satisfy the 3DGS performance and the sparsity requirements,
-              achieving a sweet point in the training process.</p>
-            <p>
-              \begin{equation}\label{eqn:obj-sparsifying}
-              \textbf{ “Sparsifying” Step:}\hspace{0.3cm}\min_{\boldsymbol{z}}h(\boldsymbol{z})+\frac{\delta}{2}\|\boldsymbol{a}-\boldsymbol{z}+\boldsymbol{\lambda}\|^2.\hspace{0.6cm}
-              \end{equation}
-              The "sparsifying" step essentially prunes the auxiliary variable \(\boldsymbol{z}\),
-              which can be considered the exactly sparse version of \(\boldsymbol{a}\). By not directly operating
-              the original Gaussians, this step avoids the irreversible loss of important information.</li>
-            </p>
-            </p>
+          <p sytle="list-style-type:none;">
+            We propose a <strong>memory-bounded 3D Gaussian Splatting (3DGS) training framework</strong> that
+            dynamically adapts the number of Gaussians during optimization to ensure both high rendering quality and
+            memory efficiency.
+            Our method alternates between three main stages: <strong>Growing</strong>, <strong>Compensation</strong>,
+            and <strong>Pruning</strong>, iteratively refining the model.
+          </p>
+          <br><br>
+          <ul>
+            <li class="bullet-paragraph">
+              <strong>Growing:</strong> A novel clone-and-split strategy increases the number of Gaussians based on
+              position and color gradients, then move new Gaussians to appropriate places by accumulated gradient
+              information, rapidly densifying and refining the scene representation.
+            </li>
+            <li class="bullet-paragraph">
+              <strong>Compensation:</strong> Underfitting regions are addressed by identifying high-error pixels and
+              generating new Gaussians at their corresponding 3D locations using depth alpha blending.
+            </li>
+            <li class="bullet-paragraph">
+              <strong>Pruning:</strong> To maintain a fixed memory budget, the least important Gaussians are removed
+              using importance-based criterion, ensuring efficient training without sacrificing quality.
+            </li>
+          </ul>
+          <br><br>
+          <p>
+            By continuously alternating between these steps, our framework learns an optimized, compact Gaussian
+            representation that achieves high-fidelity rendering while staying within a limited memory footprint.
+          </p>
+          <!-- </section <ol style="padding-left: 1.5rem;" sytle="list-style-type:none;">
+      Our GaussianSpa formulates 3DGS simplification as a constrained optimization problem with a sparsity
+      constraint:
+      \begin{equation}\label{eqn:obj-opacity-form}
+      \begin{aligned}
+      \min_{(\boldsymbol{a},\boldsymbol{\Theta})} ~&\mathcal{L}(\boldsymbol{a},\boldsymbol{\Theta}),
+      \end{aligned}
+      \end{equation}
+      \begin{equation}
+      \begin{aligned}
+      \text{s.t.}\hspace{0.2cm}&\|\boldsymbol{a}\|_0\leq\kappa.
+      \end{aligned}
+      \end{equation}
+      Variable \(\boldsymbol{\Theta}\) represent other GS variables except for the Gaussian opacity
+      \(\boldsymbol{a}\),
+      and the sparsity constraint restricts the \(\ell_0\) norm of the Gaussian opacity to a specified number.
+      We present an efficient "optimizing-sparsifying" solution to solve this problem, consisting of two main
+      steps
+      (please refer to our paper for more details):
+      <p>\begin{equation}\label{eqn:obj-optimizing}
+        \textbf{ “Optimizing”
+        Step:}\hspace{0.3cm}\min_{\boldsymbol{a},\boldsymbol{{\Theta}}}\mathcal{L}(\boldsymbol{a},\boldsymbol{\Theta})+\frac{\delta}{2}\|\boldsymbol{a}-\boldsymbol{z}+\boldsymbol{\lambda}\|^2.
+        \end{equation}
+        The "optimizing" step essentially optimizes over the original Gaussian variables and pushes the Gaussian
+        opacity
+        \(\boldsymbol{a}\)
+        close to the auxiliary \(\boldsymbol{z}\) that is exactly sparse using a gradient-based approach.
+        This way, it can simultaneously satisfy the 3DGS performance and the sparsity requirements,
+        achieving a sweet point in the training process.</p>
+      <p>
+        \begin{equation}\label{eqn:obj-sparsifying}
+        \textbf{ “Sparsifying”
+        Step:}\hspace{0.3cm}\min_{\boldsymbol{z}}h(\boldsymbol{z})+\frac{\delta}{2}\|\boldsymbol{a}-\boldsymbol{z}+\boldsymbol{\lambda}\|^2.\hspace{0.6cm}
+        \end{equation}
+        The "sparsifying" step essentially prunes the auxiliary variable \(\boldsymbol{z}\),
+        which can be considered the exactly sparse version of \(\boldsymbol{a}\). By not directly operating
+        the original Gaussians, this step avoids the irreversible loss of important information.
+        </li>
+      </p> -->
+          <!-- </p> -->
         </div>
       </section>
 
@@ -249,17 +278,17 @@
 
           <div class="content">
             <video class="video" width="100%" id="ablation2" loop="" playsinline="" autoplay="" muted="" controls
-              src="./static/videos/kitchen_training.mp4" >
-            </video> 
+              src="./static/videos/kitchen_training.mp4">
+            </video>
           </div>
           <div class="content">
             <video class="video" width="100%" id="ablation2" loop="" playsinline="" autoplay="" muted="" controls
-              src="./static/videos/counter_training.mp4" >
-            </video> 
+              src="./static/videos/counter_training.mp4">
+            </video>
           </div>
-        </div>  
+        </div>
       </div>
-     
+
     </div>
   </section>
 
@@ -271,17 +300,17 @@
 
           <div class="content">
             <video class="video" width="100%" id="ablation2" loop="" playsinline="" autoplay="" muted="" controls
-              src="./static/videos/flowers_training.mp4" >
-            </video> 
+              src="./static/videos/flowers_training.mp4">
+            </video>
           </div>
           <div class="content">
             <video class="video" width="100%" id="ablation3" loop="" playsinline="" autoplay="" muted="" controls
-              src="./static/videos/stump_training.mp4" >
-            </video> 
+              src="./static/videos/stump_training.mp4">
+            </video>
           </div>
-        </div>  
+        </div>
       </div>
-     
+
     </div>
   </section>
 

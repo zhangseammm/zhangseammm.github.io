@@ -352,3 +352,10 @@
   max-width: 100%;
   height: auto;
 }
+
+  .bullet-paragraph::before {
+    content: "• ";
+    color: black;
+    font-weight: bold;
+    margin-right: 5px;
+  }
