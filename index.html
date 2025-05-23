@@ -149,7 +149,7 @@
     <div class="container is-max-desktop">
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered" sytle="margin-bottom:0rem;">
-        <div class="column is-four-fifths" style="padding-bottom:6rem;">
+        <div class="column is-four-fifths" style="padding-bottom:4.5rem;">
           <h2 class="title is-3" id="abstract1">Abstract</h2>
           <div class="content has-text-justified" sytle="margin-bottom:0rem;">
             <p id="abstract2">
@@ -222,46 +222,6 @@
             By continuously alternating between these steps, our framework learns an optimized, compact Gaussian
             representation that achieves high-fidelity rendering while staying within a limited trianing memory usage.
           </p>
-          <!-- </section <ol style="padding-left: 1.5rem;" sytle="list-style-type:none;">
-      Our GaussianSpa formulates 3DGS simplification as a constrained optimization problem with a sparsity
-      constraint:
-      \begin{equation}\label{eqn:obj-opacity-form}
-      \begin{aligned}
-      \min_{(\boldsymbol{a},\boldsymbol{\Theta})} ~&\mathcal{L}(\boldsymbol{a},\boldsymbol{\Theta}),
-      \end{aligned}
-      \end{equation}
-      \begin{equation}
-      \begin{aligned}
-      \text{s.t.}\hspace{0.2cm}&\|\boldsymbol{a}\|_0\leq\kappa.
-      \end{aligned}
-      \end{equation}
-      Variable \(\boldsymbol{\Theta}\) represent other GS variables except for the Gaussian opacity
-      \(\boldsymbol{a}\),
-      and the sparsity constraint restricts the \(\ell_0\) norm of the Gaussian opacity to a specified number.
-      We present an efficient "optimizing-sparsifying" solution to solve this problem, consisting of two main
-      steps
-      (please refer to our paper for more details):
-      <p>\begin{equation}\label{eqn:obj-optimizing}
-        \textbf{ “Optimizing”
-        Step:}\hspace{0.3cm}\min_{\boldsymbol{a},\boldsymbol{{\Theta}}}\mathcal{L}(\boldsymbol{a},\boldsymbol{\Theta})+\frac{\delta}{2}\|\boldsymbol{a}-\boldsymbol{z}+\boldsymbol{\lambda}\|^2.
-        \end{equation}
-        The "optimizing" step essentially optimizes over the original Gaussian variables and pushes the Gaussian
-        opacity
-        \(\boldsymbol{a}\)
-        close to the auxiliary \(\boldsymbol{z}\) that is exactly sparse using a gradient-based approach.
-        This way, it can simultaneously satisfy the 3DGS performance and the sparsity requirements,
-        achieving a sweet point in the training process.</p>
-      <p>
-        \begin{equation}\label{eqn:obj-sparsifying}
-        \textbf{ “Sparsifying”
-        Step:}\hspace{0.3cm}\min_{\boldsymbol{z}}h(\boldsymbol{z})+\frac{\delta}{2}\|\boldsymbol{a}-\boldsymbol{z}+\boldsymbol{\lambda}\|^2.\hspace{0.6cm}
-        \end{equation}
-        The "sparsifying" step essentially prunes the auxiliary variable \(\boldsymbol{z}\),
-        which can be considered the exactly sparse version of \(\boldsymbol{a}\). By not directly operating
-        the original Gaussians, this step avoids the irreversible loss of important information.
-        </li>
-      </p> -->
-          <!-- </p> -->
         </div>
       </section>
 
